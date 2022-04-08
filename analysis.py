@@ -20,7 +20,7 @@ while True:
             tmp = [item for item in li if t[i] == item[i]]
             li = tmp
     print(li)
-    if sum(ans) == 5:
+    if sum(ans) == 10:
         exit
     
 
