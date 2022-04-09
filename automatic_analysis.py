@@ -2,6 +2,7 @@ import copy
 import random
 
 from numpy import average
+from tqdm import tqdm
 
 li = []
 bit = [0,0,0,0,0]
@@ -17,7 +18,7 @@ tmp2_li = copy.deepcopy(li)
 
 def search_max(li):
     best = [[] for _ in range(5)]#それぞれ何回出現するか
-    ans = [[] for _ in range(5)]#順位
+    ans = [[] for _ in range(5)]#頻度順
     moji = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモマミムメモラリルレロヤユヨワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョヮー'
     mojilen = len(moji)
     for i in range(5):
@@ -71,7 +72,7 @@ def search_max(li):
 
 rand_list = [random.choice(li) for _ in range(100)]
 
-for i in range(100):
+for i in tqdm(range(100)):
     cnt = 0
     t = rand_list[i]
     ans = [0, 0, 0, 0, 0]
@@ -109,7 +110,5 @@ for i in range(100):
                 tmp = [item for item in li if inp[i] == item[i]]
                 li = tmp
         cnt += 1
-        print(li)
-        print(len(li))
 
 print(average(rate))
