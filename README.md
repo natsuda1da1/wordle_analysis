@@ -1,6 +1,4 @@
 # wordle_analysis
 
-Please change to your own file path.
-
-If you input the answer(0 or 1 or 2), you should type space after typeing it. 
-ex) 0 0 0 0 0
+本プログラムは次の著作者によるソフトウェアを使用しています：国立国語研究所(2004)『分類語彙表増補改訂版データベース』(ver.1.0)
+国立国語研究所(2004)『分類語彙表増補改訂版データベース』(ver.1.0)はクリエイティブ・コモンズ 表示-非営利-継承4.0 非移植(CC BY-NC-SA 4.0)のもと提供されています。
