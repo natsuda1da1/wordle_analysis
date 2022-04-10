@@ -3,7 +3,7 @@ import copy
 li = []
 bit = [0,0,0,0,0]
 
-with open("./dict.csv", "r", encoding="utf-8") as f:
+with open("./A_data_new.csv", "r", encoding="utf-8") as f:
     file_data = f.readlines()
     for i in file_data:
         li.append(i.split('\n')[0])
@@ -13,7 +13,8 @@ tmp_li = copy.deepcopy(li)
 def search_max(li):
     best = [[] for _ in range(5)]#それぞれ何回出現するか
     ans = [[] for _ in range(5)]#順位
-    moji = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモマミムメモラリルレロヤユヨワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョヮー'
+    moji = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモラリルレロヤユヨワヲンガギグゲゴザジズヅゼゾダジヂヅデドバビブヴベボパピプペポァィゥェォッャュョヮー'
+    #moji = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもらりるれろやゆよわをんがぎぐげござじずぜぞだじぢづでどばびぶヴべぼぱぴぷぺぽぁぃぅぇぉっゃゅょゎー'
     mojilen = len(moji)
     for i in range(5):
         for k in range(mojilen):

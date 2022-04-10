@@ -8,7 +8,7 @@ li = []
 bit = [0,0,0,0,0]
 rate = []
 
-with open("./dict.csv", "r", encoding="utf-8") as f:
+with open("./A_data_new.csv", "r", encoding="utf-8") as f:
     file_data = f.readlines()
     for i in file_data:
         li.append(i.split('\n')[0])
@@ -18,8 +18,9 @@ tmp2_li = copy.deepcopy(li)
 
 def search_max(li):
     best = [[] for _ in range(5)]#それぞれ何回出現するか
-    ans = [[] for _ in range(5)]#頻度順
-    moji = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモマミムメモラリルレロヤユヨワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョヮー'
+    ans = [[] for _ in range(5)]#順位
+    moji = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモラリルレロヤユヨワヲンガギグゲゴザジズヅゼゾダジヂヅデドバビブヴベボパピプペポァィゥェォッャュョヮー'
+    #moji = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもらりるれろやゆよわをんがぎぐげござじずぜぞだじぢづでどばびぶヴべぼぱぴぷぺぽぁぃぅぇぉっゃゅょゎー'
     mojilen = len(moji)
     for i in range(5):
         for k in range(mojilen):
@@ -33,8 +34,7 @@ def search_max(li):
         for t in range(mojilen):
             p = best[i].index(s_tmp[t])
             ans[i].append(moji[p])
-    word = ''
-    sum_beet = [sum(best[i]) for i in range(5)]
+    #sum_beet = [sum(best[i]) for i in range(5)]
     weight = [[] for _ in range(5)]
     for i in range(5):
         for k in range(len(best[i])):
@@ -68,11 +68,13 @@ def search_max(li):
             break
         if e not in end_li:
             end_li.append(e)
-    return end_li[random.randint(0, len(end_li)-1)]
+    return end_li[random.randint(0, 3)]
 
 rand_list = [random.choice(li) for _ in range(100)]
-
-for i in tqdm(range(100)):
+cntter = 0
+pbar =  tqdm(range(len(rand_list)))
+for i in pbar:
+    pbar.set_postfix_str(average(rate))
     cnt = 0
     t = rand_list[i]
     ans = [0, 0, 0, 0, 0]
@@ -110,5 +112,7 @@ for i in tqdm(range(100)):
                 tmp = [item for item in li if inp[i] == item[i]]
                 li = tmp
         cnt += 1
+        #print(li)
+        #print(len(li))
 
-print(average(rate))
+print('正解までの平均回数は{}回です'.format(average(rate)))
